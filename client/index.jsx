@@ -1,4 +1,4 @@
-//set up main app component here!
+
 import React from 'react';
 import ReactDom from 'react-dom';
 import $ from 'jquery';
