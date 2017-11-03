@@ -4,3 +4,5 @@ node_modules/
 
 #compiled directories
 client/dist/bundle.js
+
+client/dist/.DS_Store
