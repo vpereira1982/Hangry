@@ -20,6 +20,7 @@ class App extends React.Component {
         <Nav />
         <Search />
         <ResultsList list={Sampledata} />
+
       </div>
     );
   }
