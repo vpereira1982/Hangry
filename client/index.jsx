@@ -1,13 +1,12 @@
-
-import React from 'react';
-import ReactDom from 'react-dom';
-import $ from 'jquery';
+const React = require('react');
+const ReactDom = require('react-dom');
+const $ = ('jquery');
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      example: 'placeholder'
     }
   }
 
@@ -15,8 +14,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        homeboys and home girls
       </div>
     )
   }
 }
 
+ReactDom.render(<App />, document.getElementById("app"));
