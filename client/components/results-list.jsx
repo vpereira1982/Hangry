@@ -14,7 +14,7 @@ class ResultsList extends React.Component {
     return (
       <div style={{'marginTop': '50px', float: 'left'}} >
 
-      <h3> Results list: </h3>
+      <h3> Results: </h3>
       {this.props.list.map((result, i) => {
         return (<Result key={i} result={result} />);
       })};
