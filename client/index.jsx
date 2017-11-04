@@ -13,7 +13,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        homeboys and home girls
+        <header>
+          <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-indigo">
+            <a class="navbar-brand" href="#"><strong>Hangry Home</strong></a>
+          </nav>
+        </header>
+        <p>homeboys and home girls</p>
       </div>
     );
   }
