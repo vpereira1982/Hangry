@@ -1,6 +1,21 @@
 body {
-  background: #ED5238;
+  background: #B62B3C;
   color: black;
   font: 100 "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
   text-align: center;
+}
+
+.navbar {
+  background: #333E46;
+
+  height: 60px;
+}
+
+.navbar a {
+  color: #CDD0D6;
+}
+
+.view {
+  background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")no-repeat center center;
+  background-size: cover;
 }
