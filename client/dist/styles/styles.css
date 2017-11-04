@@ -18,6 +18,10 @@ body {
   margin-top: 250px;
 }
 
+.label, .button {
+  height: 50px;
+}
+
 .view {
   background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")no-repeat center center;
   background-size: cover;
