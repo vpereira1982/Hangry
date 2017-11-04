@@ -1,3 +1,5 @@
+const React = require('react');
+
 const Search = () => (
   <form className="form-inline">
     <label className="sr-only" for="inlineFormInput">Name</label>

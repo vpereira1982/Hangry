@@ -4,7 +4,7 @@ const Result = require('./result.jsx');
 
 class ResultsList extends React.Component {
   constructor(props) {
-    super(pros);
+    super(props);
 
   }
 

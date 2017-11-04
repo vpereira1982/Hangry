@@ -1,6 +1,6 @@
-const Nav = require('./dist/components/nav.jsx');
-const Search = require('./dist/components/search.jsx');
-const ResultsList = require('./dist/components/results-list.jsx');
+const Nav = require('./components/nav.jsx');
+const Search = require('./components/search.jsx');
+const ResultsList = require('./components/results-list.jsx');
 
 const React = require('react');
 const ReactDom = require('react-dom');
