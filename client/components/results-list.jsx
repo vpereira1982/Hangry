@@ -12,13 +12,12 @@ class ResultsList extends React.Component {
         console.log('this is the list', this.props.list)
 
     return (
-      <div>
-      <h3> This is the body of Results List </h3>
+      <div style={{'marginTop': '50px', float: 'left'}} >
 
-        {this.props.list.map((result, i) => {
-          return (<Result key={i} result={result} />);
-        })};
-
+      <h3> Results list: </h3>
+      {this.props.list.map((result, i) => {
+        return (<Result key={i} result={result} />);
+      })};
     </div>
     )
   }

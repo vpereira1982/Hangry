@@ -19,8 +19,9 @@ class App extends React.Component {
       <div>
         <Nav />
         <Search />
-        <ResultsList list={Sampledata} />
-
+        <div className="container">
+          <ResultsList list={Sampledata} />
+        </div>
       </div>
     );
   }
