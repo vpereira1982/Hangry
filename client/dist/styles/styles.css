@@ -14,6 +14,9 @@ body {
 .navbar a {
   color: #CDD0D6;
 }
+#search-boxes {
+  margin-top: 250px;
+}
 
 .view {
   background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")no-repeat center center;
