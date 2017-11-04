@@ -10,11 +10,11 @@ class Result extends React.Component {
   render() {
     return (
       <div className="jumbotron Col xs={12} md={6}">
-        <h5>{this.details.restaurant}</h5>
-        <p>{this.details.item}</p>
+        <h5 >{this.details.restaurant}</h5>
+        <p className="lead">{this.details.item}</p>
         <p>{this.details.description}</p>
-        <p>{this.details.location}</p>
-        <p><h7><strong>Price:</strong> {this.details.price}</h7></p>
+        <p><h7><strong>Location:</strong> {this.details.location}</h7></p>
+        <p><h7><strong>Price:</strong> ${this.details.price}</h7></p>
       </div>
     )
   }
