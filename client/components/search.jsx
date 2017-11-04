@@ -1,7 +1,7 @@
 const React = require('react');
 
 const Search = () => (
-  <form className="form-inline">
+  <form className="form-inline" id="search-boxes">
     <label className="sr-only" for="inlineFormInput">Name</label>
     <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe" />
 
