@@ -1,6 +1,7 @@
 const request = require('request');
 
-let getNamesAndKeys = (cityName, callback) => {
+let getNamesAndKeys = (cityName, foodType, callback) => {
+  var splitFood = foodType.split(' '); // "pepperoni pizza" --> ['pepperoni', 'pizza']
   let query = {
     headers: {
       'X-Access-Token': '0c8f1aa53d894030'
@@ -15,8 +16,12 @@ let getNamesAndKeys = (cityName, callback) => {
       var restaurants = res.restaurants;
       var namesAndKeys = [];
       restaurants.forEach( (restaurant) => {
-        namesAndKeys.push({name: restaurant.name, location: restaurant.city, apiKey: restaurant.apiKey})
-      })
+        splitFood.forEach( (type) => {
+          if (restaurant.foodTypes.includes(type)) {
+            namesAndKeys.push({name: restaurant.name, location: restaurant.city, apiKey: restaurant.apiKey});
+          }
+        });
+      });
       callback(namesAndKeys);
     }
   });
@@ -60,9 +65,9 @@ let formattedMenu = (apiKey, callback) => {
   });
 };
 
-let menusByCity = (cityName, callback) => {
+let menusByCity = (cityName, foodType, callback) => {
   var menus = [];
-  getNamesAndKeys(cityName, (restaurants) => {
+  getNamesAndKeys(cityName, foodType, (restaurants) => {
     if (restaurants) {
       restaurants.forEach( (restaurant) => {
         formattedMenu(restaurant.apiKey, (menu) => {
@@ -79,7 +84,6 @@ let menusByCity = (cityName, callback) => {
   });
 };
 
-module.exports.getBeerData = getBeerData;
 module.exports.getNamesAndKeys = getNamesAndKeys;
 module.exports.getMenu = getMenu;
 module.exports.formattedMenu = formattedMenu;
