@@ -7,16 +7,15 @@ class App extends React.Component {
     super(props);
     this.state = {
       example: 'placeholder'
-    }
+    };
   }
-
 
   render() {
     return (
       <div>
         homeboys and home girls
       </div>
-    )
+    );
   }
 }
 
