@@ -1,3 +1,5 @@
+const React = require('react');
+
 const Nav = () => (
   <header>
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-indigo">
