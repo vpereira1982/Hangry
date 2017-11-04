@@ -9,6 +9,8 @@ class ResultsList extends React.Component {
   }
 
   render() {
+        console.log('this is the list', this.props.list)
+
     return (
       <div>
       <h3> This is the body of Results List </h3>
