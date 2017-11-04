@@ -1,4 +1,4 @@
-window.sampledata = [ { restaurant: 'Greek Express - Main St',
+module.exports = [ { restaurant: 'Greek Express - Main St',
     location: 'Bellevue',
     item: 'Greek Salad - Small',
     description: 'Lettuce, tomatoes, cucumbers, onions, house greek dressing, topped with feta cheese, greek olives, pepperoncini. Choice of small, large, small (served 5 people), or large (served 10 people).',
