@@ -16,9 +16,10 @@ body {
 }
 #search-boxes {
   margin-top: 250px;
+  margin-left: 32%;
 }
 
-.label, .button {
+input, button {
   height: 50px;
 }
 
