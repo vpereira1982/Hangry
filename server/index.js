@@ -12,7 +12,8 @@ app.use(express.static(path.resolve(__dirname, '../client/dist/')));
 
 
 
-
+//create get request by location
+//app.get(...)
 
 
 
