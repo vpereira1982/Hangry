@@ -9,7 +9,7 @@ class ResultsList extends React.Component {
   }
 
   render() {
-        console.log('this is the list', this.props.list)
+    console.log('this is the list data', this.props.list)
 
     return (
       <div style={{'marginTop': '50px', float: 'left'}} >
