@@ -1,6 +1,6 @@
 const React = require('react');
 
-const Search = () => (
+const Search = ({handleSearch}) => (
   <form className="form-inline" id="search-boxes">
     <div clss="form-group">
       <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Search Your Food" />
