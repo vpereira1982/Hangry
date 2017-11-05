@@ -28,7 +28,7 @@ let getNamesAndKeys = (cityName, foodType, callback) => {
 };
 
 
-let getMenu = (apiKey, callback) => {
+let getMenu = (apiKey, foodType, callback) => {
   let query = {
     headers: {
       'X-Access-Token': '0c8f1aa53d894030'
@@ -41,22 +41,38 @@ let getMenu = (apiKey, callback) => {
     } else {
       var res = JSON.parse(body);
       var menus = [];
-      res.forEach( (item) => {
-        menus.push(item.items);
+      var splitFood = foodType.split(' '); //need to ignore punctuation: need to use REGEX?
+      res.forEach( (menu) => {
+        menu.items.forEach((item) => {
+          var name = item.name.split(' ');
+          var desc = [];
+          if (item.description) {
+            desc = item.description.split(' ');
+          }
+          var menuItem = desc.concat(name);
+          var counter = 0;
+          for (var i = 0; i < splitFood.length; i++) {
+            if (menuItem.includes(splitFood[i])) {
+              counter++;
+            }
+          }
+          item.relevance = counter;
+          if (item.relevance >= 1) {
+            menus.push(item);
+          }
+        });
       });
       callback(menus);
     }
   });
 };
 
-let formattedMenu = (apiKey, callback) => {
+let formattedMenu = (apiKey, foodType, callback) => {
   var formattedData = [];
-  getMenu(apiKey, (data) => {
+  getMenu(apiKey, foodType, (data) => {
     if (data) {
       data.forEach( (menu) => {
-        menu.forEach( (item) => {
-          formattedData.push({name: item.name, description: item.description || item.name, price: item.basePrice});
-        });
+        formattedData.push({name: menu.name, description: menu.description || menu.name, price: menu.basePrice, relevance: menu.relevance});
       });
       callback(formattedData);
     } else {
@@ -66,14 +82,16 @@ let formattedMenu = (apiKey, callback) => {
 };
 
 let menusByCity = (cityName, foodType, callback) => {
+  console.log('in menus by city')
   var menus = [];
   getNamesAndKeys(cityName, foodType, (restaurants) => {
     if (restaurants) {
       restaurants.forEach( (restaurant) => {
-        formattedMenu(restaurant.apiKey, (menu) => {
+        formattedMenu(restaurant.apiKey, foodType,  (menu) => {
           if (menu) {
             menu.forEach( (item) => {
-              var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price};
+              console.log('in menus by city: item: '. item);
+              var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance};
               menus.push(entry);
             });
             callback(menus);
