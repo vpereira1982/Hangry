@@ -42,6 +42,7 @@ let getMenu = (apiKey, foodType, callback) => {
       var res = JSON.parse(body);
       var menus = [];
       var splitFood = foodType.split(' '); //need to ignore punctuation: need to use REGEX?
+      splitFood = cutCommas(splitFood);
       res.forEach( (menu) => {
         menu.items.forEach((item) => {
           var name = item.name.split(' ');
@@ -50,6 +51,7 @@ let getMenu = (apiKey, foodType, callback) => {
             desc = item.description.split(' ');
           }
           var menuItem = desc.concat(name);
+          menuItem = cutCommas(menuItem);
           var counter = 0;
           for (var i = 0; i < splitFood.length; i++) {
             if (menuItem.includes(splitFood[i])) {
@@ -82,7 +84,7 @@ let formattedMenu = (apiKey, foodType, callback) => {
 };
 
 let menusByCity = (cityName, foodType, callback) => {
-  console.log('in menus by city')
+  // console.log('in menus by city')
   var menus = [];
   getNamesAndKeys(cityName, foodType, (restaurants) => {
     if (restaurants) {
@@ -101,6 +103,16 @@ let menusByCity = (cityName, foodType, callback) => {
     }
   });
 };
+
+
+let cutCommas = (array) => {
+  return array.map(word => {
+    var noPunc = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    var cutStr = noPunc.replace(/\s{2,}/g,' ');
+    return cutStr.charAt(0).toUpperCase() + cutStr.slice(1);
+  });
+};
+
 
 module.exports.getNamesAndKeys = getNamesAndKeys;
 module.exports.getMenu = getMenu;
