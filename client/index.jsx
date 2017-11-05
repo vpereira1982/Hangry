@@ -10,15 +10,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: Sampledata
+      list: ''
     };
   }
 
   handleSearch(query) {
-    // delete this query;
+    let searchFoodInput = query.target.value;
+    console.log();
     console.log('this is the search query', query)
     $.ajax({
-      method: "GET",
+      method: "POST",
       url: "http://localhost:3000" + '/' + query,
       contentType: 'application/json',
       success: function(data) {
