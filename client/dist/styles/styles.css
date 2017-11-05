@@ -16,7 +16,16 @@ body {
 }
 #search-boxes {
   margin-top: 250px;
-  margin-left: 32%;
+  margin-left: 28%;
+}
+
+.form-control {
+  font-size: 105%;
+}
+
+button.btn.btn-primary {
+  background: #384745;
+  font-size: 50%;
 }
 
 input, button {
