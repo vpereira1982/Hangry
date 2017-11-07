@@ -4,7 +4,7 @@ const ResultsList = require('./components/results-list.jsx');
 const Sampledata = require('./sampledata/sampledata.js')
 const React = require('react');
 const ReactDom = require('react-dom');
-const $ = ('jquery');
+const $ = require('jquery');
 
 class App extends React.Component {
   constructor(props) {
@@ -15,8 +15,8 @@ class App extends React.Component {
   }
 
   handleSearch(query) {
-    let searchFoodInput = query.target.value;
     console.log('this is the search query', query)
+
     $.ajax({
       method: "POST",
       url: "http://localhost:3000",
