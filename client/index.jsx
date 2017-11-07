@@ -10,20 +10,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: ''
+      list: Sampledata
     };
   }
 
   handleSearch(query) {
     let searchFoodInput = query.target.value;
-    console.log();
     console.log('this is the search query', query)
     $.ajax({
       method: "POST",
-      url: "http://localhost:3000" + '/' + query,
+      url: "http://localhost:3000",
+      data: query,
       contentType: 'application/json',
       success: function(data) {
-        console.log('received data!');
         this.setState({
           list: data
         });
