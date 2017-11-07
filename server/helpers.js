@@ -6,8 +6,8 @@ let getNamesAndKeys = (cityName, foodType, callback) => {
     headers: {
       'X-Access-Token': '0c8f1aa53d894030'
     },
-    url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both&pickup-radius=10&street-address=' + cityName  //"Search Restaurants"
-  }
+    url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both&pickup-radius=10&street-address=' + cityName //"Search Restaurants"
+  };
   request.get(query, (error, response, body) => {
     if (error) {
       console.log('ERROR GETTING eatstreet DATA');
@@ -33,8 +33,8 @@ let getMenu = (apiKey, foodType, callback) => {
     headers: {
       'X-Access-Token': '0c8f1aa53d894030'
     },
-    url: 'https://api.eatstreet.com/publicapi/v1/restaurant/' + apiKey + '/menu'  //"Restaurant Menu"
-  }
+    url: 'https://api.eatstreet.com/publicapi/v1/restaurant/' + apiKey + '/menu' //"Restaurant Menu"
+  };
   request.get(query, (error, response, body) => {
     if (error) {
       console.log('ERROR GETTING eatstreet DATA');
@@ -89,7 +89,7 @@ let menusByCity = (cityName, foodType, callback) => {
   getNamesAndKeys(cityName, foodType, (restaurants) => {
     if (restaurants) {
       restaurants.forEach( (restaurant) => {
-        formattedMenu(restaurant.apiKey, foodType,  (menu) => {
+        formattedMenu(restaurant.apiKey, foodType, (menu) => {
           if (menu) {
             menu.forEach( (item) => {
               console.log('in menus by city: item: '. item);
@@ -108,7 +108,7 @@ let menusByCity = (cityName, foodType, callback) => {
 let cutCommas = (array) => {
   return array.map(word => {
     var noPunc = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-    var cutStr = noPunc.replace(/\s{2,}/g,' ');
+    var cutStr = noPunc.replace(/\s{2,}/g, '');
     return cutStr.charAt(0).toUpperCase() + cutStr.slice(1);
   });
 };
