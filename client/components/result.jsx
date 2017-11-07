@@ -16,8 +16,12 @@ class Result extends React.Component {
           <div className="row justify-content-md-center">
             <p className="text-justify" style={{maxWidth: '80%'}}>{this.details.description}</p>
           </div>
-          <p><h7><strong>Location:</strong> {this.details.location}</h7></p>
-          <p><h7><strong>Price:</strong> ${this.details.price}</h7></p>
+          <h6>
+            <p><strong>Location:</strong> {this.details.location}</p>
+          </h6>
+          <h6>
+            <p><strong>Price:</strong> ${this.details.price}</p>
+          </h6>
         </div>
       </div>
     )

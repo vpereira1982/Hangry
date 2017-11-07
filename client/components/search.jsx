@@ -1,14 +1,18 @@
 const React = require('react');
+let query = {};
 
 const Search = ({handleSearch}) => (
   <form
-    onSubmit={() => { handleSearch(query); }}
+    onSubmit={(e) => {
+      e.preventDefault();
+      handleSearch(query);
+    }}
     className="form-inline"
     id="search-boxes">
     {console.log('this is the search form', handleSearch)}
     <div clss="form-group">
       <input
-        onChange={handleSearch}
+        onChange={(e) => {query.search = e.target.value; }}
         type="text"
         className="form-control mb-2 mr-sm-2 mb-sm-0"
         id="inlineFormInput"
@@ -18,8 +22,10 @@ const Search = ({handleSearch}) => (
       <div className="input-group-addon">Location</div>
       <input
         type="text"
+        onChange={(e) => {query.location = e.target.value; }}
+
         className="form-control"
-        id="inlineFormInputGroup" 
+        id="inlineFormInputGroup"
         placeholder="Where are you" />
     </div>
     <button type="submit" className="btn btn-primary">Get Your Hangry On</button>
