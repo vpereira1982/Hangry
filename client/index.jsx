@@ -2,6 +2,8 @@ const Nav = require('./components/nav.jsx');
 const Search = require('./components/search.jsx');
 const ResultsList = require('./components/results-list.jsx');
 const Sampledata = require('./sampledata/sampledata.js');
+const HangryLogo = require('./components/logo-file.js');
+
 const React = require('react');
 const ReactDom = require('react-dom');
 const $ = require('jquery');
@@ -56,6 +58,7 @@ class App extends React.Component {
     return (
       <div>
         <Nav />
+        <HangryLogo />
         <Search
           currFoodSearched={this.state.currFoodSearched}
           currLocationSearched={this.state.currLocationSearched}
@@ -63,9 +66,7 @@ class App extends React.Component {
           handleLocationUserSearch={this.handleLocationUserSearch.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
         />
-        <div className="container">
-          <ResultsList list={this.state.list} />
-        </div>
+        <ResultsList list={this.state.list} />
       </div>
     );
   }
