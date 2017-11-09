@@ -14,8 +14,15 @@ body {
 .navbar a {
   color: #CDD0D6;
 }
+
+#main-food-pic {
+  height: 132px;
+  padding-right: 5%;
+}
+
 #search-boxes {
-  margin-top: 250px;
+  margin-top: 155px;
+  padding-left: 5%;
 }
 
 .form-control {

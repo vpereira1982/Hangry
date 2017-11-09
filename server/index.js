@@ -11,8 +11,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../client/dist/')));
 
-
-
+app.post('/searchResults', function (request, response, next) {
+  let searchObj = request.body;
+  console.log('searchObj coming from server file', searchObj);
+});
 //create get request by location
 //app.get(...)
 
