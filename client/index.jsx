@@ -1,7 +1,7 @@
 const Nav = require('./components/nav.jsx');
 const Search = require('./components/search.jsx');
-// const ResultsList = require('./components/results-list.jsx');
-// const Sampledata = require('./sampledata/sampledata.js');
+const ResultsList = require('./components/results-list.jsx');
+const Sampledata = require('./sampledata/sampledata.js');
 const React = require('react');
 const ReactDom = require('react-dom');
 const $ = require('jquery');
@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       currFoodSearched: '',
-      currLocationSearched: ''
+      currLocationSearched: '',
+      list: Sampledata
     };
   }
 
@@ -37,11 +38,18 @@ class App extends React.Component {
 
     $.ajax({
       method: 'POST',
-      url: '/searchResults',
-      data: currentSearchTermsObj,
-    }).done(function(data) {
-      console.log('data on the client thats already came back from the server', data);
-    });
+      url: 'http://www.localhost:3000',
+      data: query,
+      contentType: 'application/json',
+      success: function(data) {
+        this.setState({
+          list: data
+        });
+      },
+      error: function(err) {
+        console.log('API call failed!', err);
+      }
+    }).bind(this);
   }
 
   render() {
@@ -56,7 +64,7 @@ class App extends React.Component {
           handleSubmit={this.handleSubmit.bind(this)}
         />
         <div className="container">
-          {/* <ResultsList list={this.state.list} /> */}
+          <ResultsList list={this.state.list} />
         </div>
       </div>
     );
