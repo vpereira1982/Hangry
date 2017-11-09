@@ -15,13 +15,21 @@ body {
   color: #CDD0D6;
 }
 
+#hangry-word-logo {
+  display: block;
+  font-family: fantasy;
+  font-size: 371%;
+  margin: 0px auto;
+  padding-top: 93px;
+}
+
 #main-food-pic {
   height: 132px;
   padding-right: 5%;
 }
 
 #search-boxes {
-  margin-top: 155px;
+  margin-top: 7px;
   padding-left: 5%;
 }
 

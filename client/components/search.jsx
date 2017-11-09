@@ -6,7 +6,7 @@ const Search = ({currFoodSearched, currLocationSearched, handleFoodUserSearch, h
     className="form-inline container"
     id="search-boxes">
     <img className="img-responsive text-center" id="main-food-pic" src="img/restaurant-icon.png" />
-    <div class="form-group">
+    <div className="form-group">
       <input
         onChange={handleFoodUserSearch}
 
