@@ -3,7 +3,7 @@ const Search = require('./components/search.jsx');
 const ResultsList = require('./components/results-list.jsx');
 const Sampledata = require('./sampledata/sampledata.js');
 const HangryLogo = require('./components/logo-file.js');
-
+const APIcall = require('./components/ajax.js')
 const React = require('react');
 const ReactDom = require('react-dom');
 const $ = require('jquery');
@@ -31,30 +31,25 @@ class App extends React.Component {
   }
 
   handleSubmit(foodUserSearch, locationUserSearch) {
-    let currentSearchTermsObj = {
-      currFoodSearched: this.state.curre,
-      currLocationSearched: ''
-    };
+    let userQuery = {
+        query: foodUserSearch,
+        location: locationUserSearch
+      };
 
-    console.log('on form submit heres my object being saved and passed to the server', currentSearchTermsObj);
+    let self = this;
 
-    $.ajax({
-      method: 'POST',
-      url: 'http://www.localhost:3000',
-      data: query,
-      contentType: 'application/json',
-      success: function(data) {
-        this.setState({
-          list: data
-        });
-      },
-      error: function(err) {
-        console.log('API call failed!', err);
-      }
-    }).bind(this);
+    APIcall.post(userQuery, '/api/search', (data) => {
+      console.log('SUCCESS on the POST call! Data:', data);
+      this.setState({
+        list: data
+      })
+    });
+    // why .bind(this) does not work?
   }
 
   render() {
+        console.log('what is this showing?', this.state.list)
+
     return (
       <div>
         <Nav />

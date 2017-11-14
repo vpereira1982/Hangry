@@ -6,15 +6,29 @@ const helpers = require('./helpers.js');
 
 const app = express();
 
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.resolve(__dirname, '../client/dist/')));
+app.use(express.static(path.join(__dirname, '../client/dist/')));
 
-app.post('/searchResults', function (request, response, next) {
-  let searchObj = request.body;
-  console.log('searchObj coming from server file', searchObj);
+
+app.post('/api/search', function (req, res) {
+  let location = req.body.location;
+  let userQuery = req.body.query;
+
+  helpers.getNamesAndKeys(location, userQuery, function(data) {
+    if (data) {
+      console.log('This is the data for this search', data);
+      res.status(201).send(data);
+    }
+  });
 });
+
+
 //create get request by location
 //app.get(...)
 
@@ -24,11 +38,6 @@ app.post('/searchResults', function (request, response, next) {
 //   }
 // });
 
-helpers.menusByCity('Seattle', 'Pepperoni Pizza', function(data) {
-  if (data) {
-    console.log('success!!!: ', data);
-  }
-});
 
 
 

@@ -2,7 +2,7 @@ const React = require('react');
 
 const Search = ({currFoodSearched, currLocationSearched, handleFoodUserSearch, handleLocationUserSearch, handleSubmit}) => (
   <form
-    onSubmit={() => { handleSubmit(currFoodSearched, currLocationSearched); }}
+    onSubmit={(event) => {event.preventDefault(); handleSubmit(currFoodSearched, currLocationSearched); }}
     className="form-inline container"
     id="search-boxes">
     <img className="img-responsive text-center" id="main-food-pic" src="img/restaurant-icon.png" />
