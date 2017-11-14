@@ -7,7 +7,7 @@ const ResultsList = ({list}) => (
     <div style={{'marginTop': '50px', float: 'left'}} >
       <h3> Eat Your Food: </h3>
       {list.map((result, i) => {
-        return (<Result key={i} result={result} />);
+        return (<Result key={Math.abs(Math.random())} result={result} />);
       })};
     </div>
   </div>
