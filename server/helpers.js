@@ -1,10 +1,10 @@
 const request = require('request');
 
-let getNamesAndKeys = (cityName, foodType, callback) => {
+let getNamesAndKeys = (cityName, miles, foodType, callback) => {
   var splitFood = foodType.split(' '); // "pepperoni pizza" --> ['pepperoni', 'pizza']
   let query = {
     headers: {'X-Access-Token': '0c8f1aa53d894030'},
-    url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both&pickup-radius=10&street-address=' + cityName
+    url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both&pickup-radius=' + miles + '&street-address=' + cityName
   };
   request.get(query, (error, response, body) => {
     if (error) {
@@ -79,7 +79,7 @@ let menusWithRelevance = (res, splitFood, callback) => {
         }
       }
       item.relevance = counter;
-      if (item.relevance === splitFood.length) {
+      if (item.relevance === splitFood.length) {    //returns most relevant menu items
         menus.push(item);
       }
     });
@@ -103,26 +103,9 @@ let formattedMenu = (apiKey, foodType, callback) => {
   });
 };
 
-//gets menu items that match length of searched term (most relevant menus only)
-// let getRelevantMenus = (apiKey, foodType, callback) => {
-//   formattedMenu(apiKey, foodType, function(data) {
-//     if (data) {
-//       var maxRelevance = foodType.split(' ').length;
-//       var relevantMenus = [];
-//       data.forEach(function(menu) {
-//         if (menu.relevance === maxRelevance) {
-//           relevantMenus.push(menu);
-//         }
-//       });
-//       callback(relevantMenus);
-//     }
-//   });
-// };
-
-
-let menusByCity = (cityName, foodType, callback) => {
+let menusByCity = (cityName, miles, foodType, callback) => {
   var menus = [];
-  getNamesAndKeys(cityName, foodType, (restaurants) => {
+  getNamesAndKeys(cityName, miles, foodType, (restaurants) => {
     if (restaurants) {
       restaurants.forEach( (restaurant) => {
         formattedMenu(restaurant.apiKey, foodType, (menu) => {
