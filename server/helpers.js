@@ -79,7 +79,7 @@ let menusWithRelevance = (res, splitFood, callback) => {
         }
       }
       item.relevance = counter;
-      if (item.relevance >= 1) {
+      if (item.relevance === splitFood.length) {
         menus.push(item);
       }
     });
@@ -104,20 +104,20 @@ let formattedMenu = (apiKey, foodType, callback) => {
 };
 
 //gets menu items that match length of searched term (most relevant menus only)
-let getRelevantMenus = (apiKey, foodType, callback) => {
-  formattedMenu(apiKey, foodType, function(data) {
-    if (data) {
-      var maxRelevance = foodType.split(' ').length;
-      var relevantMenus = [];
-      data.forEach(function(menu) {
-        if (menu.relevance === maxRelevance) {
-          relevantMenus.push(menu);
-        }
-      });
-      callback(relevantMenus);
-    }
-  });
-};
+// let getRelevantMenus = (apiKey, foodType, callback) => {
+//   formattedMenu(apiKey, foodType, function(data) {
+//     if (data) {
+//       var maxRelevance = foodType.split(' ').length;
+//       var relevantMenus = [];
+//       data.forEach(function(menu) {
+//         if (menu.relevance === maxRelevance) {
+//           relevantMenus.push(menu);
+//         }
+//       });
+//       callback(relevantMenus);
+//     }
+//   });
+// };
 
 
 let menusByCity = (cityName, foodType, callback) => {
@@ -125,7 +125,7 @@ let menusByCity = (cityName, foodType, callback) => {
   getNamesAndKeys(cityName, foodType, (restaurants) => {
     if (restaurants) {
       restaurants.forEach( (restaurant) => {
-        getRelevantMenus(restaurant.apiKey, foodType, (menu) => {
+        formattedMenu(restaurant.apiKey, foodType, (menu) => {
           if (menu) {
             menu.forEach( (item) => {
               var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance};
