@@ -44,7 +44,6 @@ class App extends React.Component {
         list: data
       })
     });
-    // why .bind(this) does not work?
   }
 
   render() {

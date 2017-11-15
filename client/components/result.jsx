@@ -1,31 +1,26 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-class Result extends React.Component {
-  constructor(props) {
-    super(props);
-    this.details = this.props.result;
-  }
+const Result = (props) => {
+  var details = props.result;
 
-  render() {
     return (
       <div className="jumbotron Col xs={12} md={6}">
-        <h5 className="btn btn-danger" style={{float: 'left', margin: '-25px 0 10px 0'}}>{this.details.name}</h5>
+        <h5 className="btn btn-danger" style={{float: 'left', margin: '-25px 0 10px 0'}}>{details.restaurant}</h5>
         <div className="card-block card w-100 text-center" style={{paddingTop: '7px'}}>
-          <p className="lead">{this.details.item}</p>
+          <p className="lead">{details.item}</p>
           <div className="row justify-content-md-center">
-            <p className="text-justify" style={{maxWidth: '80%'}}>{this.details.description}</p>
+            <p className="text-justify" style={{maxWidth: '80%'}}>{details.description}</p>
           </div>
           <h6>
-            <p><strong>Location:</strong> {this.details.location}</p>
+            <p><strong>Location:</strong> {details.location}</p>
           </h6>
           <h6>
-            <p><strong>Price:</strong> ${this.details.price}</p>
+            <p><strong>Price:</strong> ${details.price}</p>
           </h6>
         </div>
       </div>
     )
-  }
 }
 
 module.exports = Result;
