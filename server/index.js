@@ -32,10 +32,10 @@ app.post('/api/search', function (req, res) {
 //create get request by location
 //app.get(...)
 
-//address, miles, food
-helpers.menusByCity('701 5th Ave, Seattle, WA 98104', 15, 'Pepperoni Pizza', function(data) {
+
+helpers.menusByCity('Seattle', 'Vegan', function(data) {
   if (data) {
-    console.log('getNamesAndKeys success: ', data.length);
+    console.log('menusByCity success: ', data);
   }
 });
 
