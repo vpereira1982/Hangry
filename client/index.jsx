@@ -6,7 +6,6 @@ const HangryLogo = require('./components/logo-file.js');
 const APIcall = require('./components/ajax.js')
 const React = require('react');
 const ReactDom = require('react-dom');
-const $ = require('jquery');
 
 class App extends React.Component {
   constructor(props) {
@@ -36,8 +35,6 @@ class App extends React.Component {
         location: locationUserSearch
       };
 
-    let self = this;
-
     APIcall.post(userQuery, '/api/search', (data) => {
       console.log('SUCCESS on the POST call! Data:', data);
       this.setState({
@@ -46,9 +43,26 @@ class App extends React.Component {
     });
   }
 
-  render() {
-        console.log('what is this showing?', this.state.list)
+  sortList(type) {
+    if (type === 'price') {
+      this.setState({
+        list: this.state.list.sort((a, b) => {
+          return a.price - b.price
+        })
+      });
+    }
 
+    if (type === 'relevance') {
+      this.setState({
+        list: this.state.list.sort((a, b) => {
+          return a.relevance - b.relevance
+        })
+      });
+    }
+
+  }
+
+  render() {
     return (
       <div>
         <Nav />
@@ -60,7 +74,7 @@ class App extends React.Component {
           handleLocationUserSearch={this.handleLocationUserSearch.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
         />
-        <ResultsList list={this.state.list} />
+        <ResultsList sortList={this.sortList.bind(this)} list={this.state.list} />
       </div>
     );
   }
