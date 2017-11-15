@@ -20,7 +20,7 @@ app.post('/api/search', function (req, res) {
   let location = req.body.location;
   let userQuery = req.body.query;
 
-  helpers.getNamesAndKeys(location, userQuery, function(data) {
+  helpers.menusByCity(location, userQuery, function(data) {
     if (data) {
       console.log('This is the data for this search', data);
       res.status(201).send(data);
