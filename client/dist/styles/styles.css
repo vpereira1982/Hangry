@@ -65,6 +65,16 @@ ul.dropdown-lr {
   width: 300px;
 }
 
+.no-lr-padding {
+  padding: 0;
+  margin: 0;
+}
+
+.btn-sort {
+  margin: 0px 0 5px 0;
+  padding: 0;
+}
+
 /* mobile fix */
 @media (max-width: 768px) {
 	.dropdown-lr h3 {

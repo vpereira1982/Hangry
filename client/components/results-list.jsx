@@ -1,12 +1,15 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const Result = require('./result.jsx');
+const SortList = require('./sort-list.jsx');
 
-const ResultsList = ({list}) => (
+const ResultsList = (props) => (
   <div className="container">
-    <div style={{'marginTop': '50px', float: 'left'}} >
+    <div style={{'marginTop': '30px'}} >
       <h3> Eat Your Food: </h3>
-      {list.map((result, i) => {
+
+      <SortList sortList={props.sortList} />
+      {props.list.map((result, i) => {
         return (<Result key={Math.abs(Math.random())} result={result} />);
       })};
     </div>
