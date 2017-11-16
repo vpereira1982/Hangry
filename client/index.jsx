@@ -35,15 +35,16 @@ class App extends React.Component {
         location: locationUserSearch
       };
 
+
     APIcall.post(userQuery, '/api/search', (data) => {
       console.log('SUCCESS on the POST call! Data:', data);
       this.setState({
-        list: data
+        list: data.slice(0, 10)
       })
     });
   }
 
-  sortList(type) {
+  sortList(type, value) {
     if (type === 'price') {
       this.setState({
         list: this.state.list.sort((a, b) => {
@@ -60,6 +61,9 @@ class App extends React.Component {
       });
     }
 
+    if (type === 'name') {
+      console.log('it got here!', value)
+    }
   }
 
   render() {

@@ -19,8 +19,8 @@ app.use(express.static(path.join(__dirname, '../client/dist/')));
 app.post('/api/search', function (req, res) {
   let location = req.body.location;
   let userQuery = req.body.query;
-
   helpers.menusByCity(location, userQuery, function(data) {
+    console.log('it gets here');
     if (data) {
       console.log('This is the data for this search', data);
       res.status(201).send(data);
@@ -31,13 +31,13 @@ app.post('/api/search', function (req, res) {
 
 //create get request by location
 //app.get(...)
-
+/*
 
 helpers.menusByCity('Seattle', 'Vegan').then(function(data) {
   console.log('success!!!: ', data);
 });
 
-
+*/
 
 
 
