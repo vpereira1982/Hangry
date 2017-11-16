@@ -23,7 +23,7 @@ let formatRestaurantData = (body, searchedFood) => {
   restaurants.forEach( (restaurant) => {
     searchedFood.forEach( (type) => {
       if (restaurant.foodTypes.includes(type)) {
-        namesAndKeys.push({name: restaurant.name, location: restaurant.city, apiKey: restaurant.apiKey});
+        namesAndKeys.push({name: restaurant.name, location: restaurant.city, apiKey: restaurant.apiKey, address: restaurant.streetAddress});
       }
     });
   });
@@ -79,15 +79,13 @@ let menusWithRelevance = (res, splitFood, callback) => {
         }
       }
       item.relevance = counter;
-      if (item.relevance >= 1) {
+      if (item.relevance === splitFood.length) {
         menus.push(item);
       }
     });
   });
   callback(menus);
 };
-
-
 
 let formattedMenu = (apiKey, foodType, callback) => {
   var formattedData = [];
@@ -103,29 +101,12 @@ let formattedMenu = (apiKey, foodType, callback) => {
   });
 };
 
-//gets menu items that match length of searched term (most relevant menus only)
-let getRelevantMenus = (apiKey, foodType, callback) => {
-  formattedMenu(apiKey, foodType, function(data) {
-    if (data) {
-      var maxRelevance = foodType.split(' ').length;
-      var relevantMenus = [];
-      data.forEach(function(menu) {
-        if (menu.relevance === maxRelevance) {
-          relevantMenus.push(menu);
-        }
-      });
-      callback(relevantMenus);
-    }
-  });
-};
-
-
 let menusByCity = (cityName, foodType, callback) => {
   var menus = [];
   getNamesAndKeys(cityName, foodType, (restaurants) => {
     if (restaurants) {
       restaurants.forEach( (restaurant) => {
-        getRelevantMenus(restaurant.apiKey, foodType, (menu) => {
+        formattedMenu(restaurant.apiKey, foodType, (menu) => {
           if (menu) {
             menu.forEach( (item) => {
               var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance, address: restaurant.address};
@@ -152,8 +133,113 @@ let cutCommas = (array) => {
   });
 };
 
+
+
 module.exports.getNamesAndKeys = getNamesAndKeys;
 module.exports.getMenu = getMenu;
 module.exports.formattedMenu = formattedMenu;
 module.exports.menusByCity = menusByCity;
 
+
+/*
+response:  { error: true,
+  errorCode: 429,
+  details: 'Per-second rate limit exceeded'
+}
+*/
+
+// let menusByCity = (cityName, foodType, callback) => {
+//   var menus = [];
+//   getNamesAndKeys(cityName, foodType, (restaurants) => {
+//     if (restaurants) {
+//       restaurants.forEach( (restaurant) => {
+//         getRelevantMenus(restaurant.apiKey, foodType, (menu) => {
+//           if (menu) {
+//             menu.forEach( (item) => {
+//               var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance, address: restaurant.address};
+//               menus.push(entry);
+//             });
+//           }
+//         });
+//       });
+//     }
+//   });
+//   setTimeout(function() {
+//     if (menus) {
+//       var groupByRestaurant = [];
+//       var restaurantNames = [];
+//       menus.forEach(menu => {
+//         if (restaurantNames.includes(menu.restaurant)) {
+//           for (var i = 0; i < groupByRestaurant.length; i++) {
+//             if (groupByRestaurant[i].name === menu.restaurant) {
+//               groupByRestaurant[i].items.push({
+//                 'item' : menu.item,
+//                 'description': menu.description,
+//                 'price': menu.price
+//               });
+//             }
+//           }
+//         } else {
+//           restaurantNames.push(menu.restaurant);
+//           var restaurantObj = {
+//               'name': menu.restaurant,
+//               'items': [],
+//               'address': menu.address,
+//               'location': menu.location
+//             };
+//             restaurantObj.items.push({
+//               'item': menu.item,
+//               'description': menu.description,
+//               'price': menu.price
+//             });
+//             groupByRestaurant.push(restaurantObj);
+//         }
+//       })
+//     };
+//     callback(groupByRestaurant);
+//   }, 2500);
+// };
+
+
+
+///BOTH FUNCTIONS BELOW TAKE USER SEARCH RADIUS
+
+// let getNamesAndKeys = (cityName, miles, foodType, callback) => {
+//   var splitFood = foodType.split(' '); // "pepperoni pizza" --> ['pepperoni', 'pizza']
+//   let query = {
+//     headers: {'X-Access-Token': '0c8f1aa53d894030'},
+//     url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both&pickup-radius=' + miles + '&street-address=' + cityName
+//   };
+//   request.get(query, (error, response, body) => {
+//     if (error) {
+//       console.log('ERROR GETTING eatstreet DATA');
+//     } else {
+//       var formattedData = formatRestaurantData(body, splitFood);
+//       callback(formattedData);
+//     }
+//   });
+// };
+
+
+// let menusByCity = (cityName, miles, foodType, callback) => {
+//   var menus = [];
+//   getNamesAndKeys(cityName, miles, foodType, (restaurants) => {
+//     if (restaurants) {
+//       restaurants.forEach( (restaurant) => {
+//         formattedMenu(restaurant.apiKey, foodType, (menu) => {
+//           if (menu) {
+//             menu.forEach( (item) => {
+//               var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance};
+//               menus.push(entry);
+//             });
+//           }
+//         });
+//       });
+//     }
+//   });
+//   setTimeout(function() {
+//     if (menus) {
+//       callback(menus);
+//     }
+//   }, 2500);
+// };

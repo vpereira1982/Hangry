@@ -21,7 +21,7 @@ const Result = (props) => {
           <p><strong>Location:</strong> {details.location}</p>
         </h6>
         <h6>
-          <p><strong>Address:</strong> ${details.address}</p>
+          <p><strong>Address:</strong> {details.address}</p>
         </h6>
         <h6>
           <p><strong>Price:</strong> ${details.price}</p>
