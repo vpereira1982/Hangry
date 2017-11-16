@@ -10,7 +10,7 @@ const ResultsList = (props) => (
 
       <SortList sortList={props.sortList} />
       {props.list.map((result, i) => {
-        return (<Result key={Math.abs(Math.random())} result={result} />);
+        return (<Result key={Math.abs(Math.random())} result={result} sortList={props.sortList} />);
       })};
     </div>
   </div>
