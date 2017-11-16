@@ -64,7 +64,7 @@ let getMenu = (apiKey, foodType, callback) => {
 
 let menusWithRelevance = (res, splitFood, callback) => {
   var menus = [];
-  res.forEach( (menu) => {
+  res.forEach((menu) => {
     menu.items.forEach((item) => {
       var name = item.name.split(' ');
       var desc = [];
