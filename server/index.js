@@ -32,11 +32,10 @@ app.post('/api/search', function (req, res) {
 //create get request by location
 //app.get(...)
 
-// helpers.getNamesAndKeys('Seattle', 'Vegan', function(data) {
-//   if (data) {
-//     console.log('getNamesAndKeys success: ', data);
-//   }
-// });
+
+helpers.menusByCity('Seattle', 'Vegan').then(function(data) {
+  console.log('success!!!: ', data);
+});
 
 
 
