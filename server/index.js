@@ -33,10 +33,8 @@ app.post('/api/search', function (req, res) {
 //app.get(...)
 
 
-helpers.menusByCity('Seattle', 'Vegan', function(data) {
-  if (data) {
-    console.log('menusByCity success: ', data);
-  }
+helpers.menusByCity('Seattle', 'Vegan').then(function(data) {
+  console.log('success!!!: ', data);
 });
 
 
