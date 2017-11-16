@@ -33,9 +33,9 @@ app.post('/api/search', function (req, res) {
 //app.get(...)
 
 
-// helpers.menusByCity('Seattle', 'Vegan', function(data) {
-//   console.log('success!!!: ', data);
-// });
+helpers.menusByCity('Seattle', 'Vegan', function(data) {
+  console.log('success!!!: ', data);
+});
 
 
 
