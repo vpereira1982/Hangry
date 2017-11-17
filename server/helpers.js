@@ -26,7 +26,7 @@ let formatRestaurantData = (body, searchedFood) => {
   restaurants.forEach( (restaurant) => {
     searchedFood.forEach( (type) => {
       if (restaurant.foodTypes.includes(type)) {
-        namesAndKeys.push({name: restaurant.name, location: restaurant.city, apiKey: restaurant.apiKey, address: restaurant.streetAddress});
+        namesAndKeys.push({name: restaurant.name, location: restaurant.city, apiKey: restaurant.apiKey, address: restaurant.streetAddress, logo: restaurant.logoUrl});
       }
     });
   });
@@ -142,7 +142,7 @@ let menusByCity = (cityName, foodType, callback) => {
         formattedMenu(restaurant.apiKey, foodType, (menu) => {
           if (menu) {
             menu.forEach( (item) => {
-              var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance, address: restaurant.address};
+              var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance, address: restaurant.address, logo: restaurant.logo};
               menus.push(entry);
             });
           }
@@ -155,6 +155,7 @@ let menusByCity = (cityName, foodType, callback) => {
       var groupByRestaurant = [];
       var restaurantNames = [];
       menus.forEach(menu => {
+        //console.log('menu: ', menu);
         if (restaurantNames.includes(menu.restaurant)) {
           for (var i = 0; i < groupByRestaurant.length; i++) {
             if (groupByRestaurant[i].name === menu.restaurant) {
@@ -171,7 +172,8 @@ let menusByCity = (cityName, foodType, callback) => {
               'name': menu.restaurant,
               'items': [],
               'address': menu.address,
-              'location': menu.location
+              'location': menu.location,
+              'logo': menu.logo
             };
             restaurantObj.items.push({
               'item': menu.item,
