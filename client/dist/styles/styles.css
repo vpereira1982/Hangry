@@ -11,6 +11,13 @@ body {
   height: 60px;
 }
 
+.button-menu-cstm {
+  padding-bottom: 8px;
+  text-align: center;
+  position: relative;
+  left: 30%;
+}
+
 .navbar a {
   color: #CDD0D6;
 }
@@ -88,5 +95,6 @@ ul.dropdown-lr {
 .extra-items {
   font-size: 75%;
   text-align: left;
-  margin-left: 10%;
+  margin-top: 5%;
+  margin-left: -40%;
 }
