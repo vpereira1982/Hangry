@@ -28,19 +28,13 @@ app.post('/api/search', function (req, res) {
   });
 });
 
-
 //create get request by location
 //app.get(...)
 
 
-helpers.menusByCity('Seattle', 'Vegan', function(data) {
-  console.log('success!!!: ', data);
-});
-
-
-
-
-
+// helpers.menusByCity('Seattle', 'Vegan', function(data) {
+//   console.log('success!!!: ', data);
+// });
 
 app.listen(3000, () => {
   console.log('listening on port 3000...');

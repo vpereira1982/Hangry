@@ -84,3 +84,9 @@ ul.dropdown-lr {
 		color: #eee;
 	}
 }
+
+.extra-items {
+  font-size: 75%;
+  text-align: left;
+  margin-left: 10%;
+}
