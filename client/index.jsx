@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       currFoodSearched: '',
       currLocationSearched: '',
-      list: Sampledata
+      list: []
     };
   }
 
