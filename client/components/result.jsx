@@ -51,7 +51,6 @@ class Result extends React.Component {
                   <strong>Click for {this.props.result.items.slice(1).length} more items!</strong>
                 </button>
             </div>
-
                 {this.state.showItems
                   ? this.props.result.items.slice(1).map(item => {
                       return (
