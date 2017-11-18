@@ -1,11 +1,11 @@
 const request = require('request');
-
+const config = require('../config.js');
 
 //"Search Restaurants" endpoint: https://developers.eatstreet.com/endpoint/search
 let getNamesAndKeys = (location, foodType, callback) => {
   var splitFood = foodType.split(' ');
   let query = {
-    headers: {'X-Access-Token': '0c8f1aa53d894030'},
+    headers: {'X-Access-Token': config.key},
     url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both&pickup-radius=10&street-address=' + location
   };
   request.get(query, (error, response, body) => {
