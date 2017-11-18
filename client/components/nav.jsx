@@ -3,6 +3,7 @@ const React = require('react');
 const Nav = () => (
   <header>
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-indigo">
+      <div className="container">
       <a className="navbar-brand" href="#">
         <strong>Hangry Home</strong>
       </a>
@@ -85,6 +86,7 @@ const Nav = () => (
           </ul>
         </li>
       </ul>
+      </div>
     </nav>
 </header>);
 
