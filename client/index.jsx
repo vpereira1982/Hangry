@@ -46,7 +46,7 @@ class App extends React.Component {
 
   sortList(type, value) {
     let list = this.state.list;
-    
+
     if (type === 'price') {
       this.setState({
         list: list.sort((a, b) => {

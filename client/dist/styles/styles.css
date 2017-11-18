@@ -92,6 +92,10 @@ ul.dropdown-lr {
 	}
 }
 
+.logo {
+  margin-top: 20px;
+}
+
 .extra-items {
   font-size: 75%;
   text-align: left;
