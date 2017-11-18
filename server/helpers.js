@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('../config.js');
+// const config = require('../config.js');
 
 //"Search Restaurants" endpoint: https://developers.eatstreet.com/endpoint/search
 let getNamesAndKeys = (location, foodType, callback) => {
