@@ -59,18 +59,15 @@ class Result extends React.Component {
                       return (
                         <div className="row col offset-5">
                           <div className="extra-items">
-                            <p></p>
                             <p><strong>Item:</strong> {item.item}</p>
                             <p style={{maxWidth: item.description.length > 100 ? '80%' : '100%' }} ><i>{item.description}</i></p>
                             <p><strong>Price:</strong> {item.price}</p>
-                            <p></p>
                         </div>
                       </div>
                       )
                     })
                   : null}
             </div>
-
         </div>
       </div>
     )

@@ -20,21 +20,12 @@ app.post('/api/search', function (req, res) {
   let location = req.body.location;
   let userQuery = req.body.query;
   helpers.menusByCity(location, userQuery, function(data) {
-    console.log('it gets here');
     if (data) {
       console.log('This is the data for this search', data);
       res.status(201).send(data);
     }
   });
 });
-
-//create get request by location
-//app.get(...)
-
-
-// helpers.menusByCity('Seattle', 'Vegan', function(data) {
-//   console.log('success!!!: ', data);
-// });
 
 app.listen(3000, () => {
   console.log('listening on port 3000...');

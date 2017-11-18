@@ -76,8 +76,7 @@ class App extends React.Component {
           currLocationSearched={this.state.currLocationSearched}
           handleFoodUserSearch={this.handleFoodUserSearch.bind(this)}
           handleLocationUserSearch={this.handleLocationUserSearch.bind(this)}
-          handleSubmit={this.handleSubmit.bind(this)}
-        />
+          handleSubmit={this.handleSubmit.bind(this)}/>
         <ResultsList sortList={this.sortList.bind(this)} list={this.state.list} />
       </div>
     );

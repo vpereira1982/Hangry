@@ -111,29 +111,6 @@ let formattedMenu = (apiKey, foodType, callback) => {
 
 
 //Calls all functions above to retrieve all relevant menu items within 10 miles of provided location/city.
-// let menusByCity = (location, foodType, callback) => {
-//   var menus = [];
-//   getNamesAndKeys(location, foodType, (restaurants) => {
-//     if (restaurants) {
-//       restaurants.forEach( (restaurant) => {
-//         formattedMenu(restaurant.apiKey, foodType, (menu) => {
-//           if (menu) {
-//             menu.forEach( (item) => {
-//               var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance, address: restaurant.address};
-//               menus.push(entry);
-//             });
-//           }
-//         });
-//       });
-//     }
-//   });
-//   setTimeout(function() {
-//     if (menus) {
-//       callback(menus);
-//     }
-//   }, 2500);
-// };
-
 let menusByCity = (cityName, foodType, callback) => {
   var menus = [];
   getNamesAndKeys(cityName, foodType, (restaurants) => {
@@ -155,7 +132,6 @@ let menusByCity = (cityName, foodType, callback) => {
       var groupByRestaurant = [];
       var restaurantNames = [];
       menus.forEach(menu => {
-        //console.log('menu: ', menu);
         if (restaurantNames.includes(menu.restaurant)) {
           for (var i = 0; i < groupByRestaurant.length; i++) {
             if (groupByRestaurant[i].name === menu.restaurant) {
@@ -184,8 +160,14 @@ let menusByCity = (cityName, foodType, callback) => {
         }
       });
     };
-    callback(groupByRestaurant);
-  }, 2000);
+    if (groupByRestaurant.length > 0) {
+      callback(groupByRestaurant);
+    } else {
+      //groupByRestaurant[0] = 'no data';
+      //console.log('groupByRestaurant: ', groupByRestaurant);
+      callback({});
+    }
+  }, 2500);
 };
 
 
@@ -203,59 +185,6 @@ module.exports.getNamesAndKeys = getNamesAndKeys;
 module.exports.getMenu = getMenu;
 module.exports.formattedMenu = formattedMenu;
 module.exports.menusByCity = menusByCity;
-
-
-// let menusByCity = (cityName, foodType, callback) => {
-//   var menus = [];
-//   getNamesAndKeys(cityName, foodType, (restaurants) => {
-//     if (restaurants) {
-//       restaurants.forEach( (restaurant) => {
-//         getRelevantMenus(restaurant.apiKey, foodType, (menu) => {
-//           if (menu) {
-//             menu.forEach( (item) => {
-//               var entry = {restaurant: restaurant.name, location: restaurant.location, item: item.name, description: item.description, price: item.price, relevance: item.relevance, address: restaurant.address};
-//               menus.push(entry);
-//             });
-//           }
-//         });
-//       });
-//     }
-//   });
-//   setTimeout(function() {
-//     if (menus) {
-//       var groupByRestaurant = [];
-//       var restaurantNames = [];
-//       menus.forEach(menu => {
-//         if (restaurantNames.includes(menu.restaurant)) {
-//           for (var i = 0; i < groupByRestaurant.length; i++) {
-//             if (groupByRestaurant[i].name === menu.restaurant) {
-//               groupByRestaurant[i].items.push({
-//                 'item' : menu.item,
-//                 'description': menu.description,
-//                 'price': menu.price
-//               });
-//             }
-//           }
-//         } else {
-//           restaurantNames.push(menu.restaurant);
-//           var restaurantObj = {
-//               'name': menu.restaurant,
-//               'items': [],
-//               'address': menu.address,
-//               'location': menu.location
-//             };
-//             restaurantObj.items.push({
-//               'item': menu.item,
-//               'description': menu.description,
-//               'price': menu.price
-//             });
-//             groupByRestaurant.push(restaurantObj);
-//         }
-//       })
-//     };
-//     callback(groupByRestaurant);
-//   }, 2500);
-// };
 
 
 
