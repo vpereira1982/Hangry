@@ -5,12 +5,12 @@ const Result = require('./result.js');
 const SortList = require('./sort-list.js');
 const UserMessage = require('./user-message.js');
 
-const ResultsList = ({sortList, list}) => (
+const ResultsList = ({sortList, list, handleClick}) => (
   list.length > 0
     ? <div className="container">
       <div id="eat-food-title">
         <h3>Eat Your Food</h3>
-        <SortList sortList={sortList} />
+        <SortList sortList={sortList} handleClick={handleClick} />
         {list.map((result, i) => {
           return (<Result
             key={Math.abs(Math.random())}

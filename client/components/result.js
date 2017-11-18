@@ -41,9 +41,8 @@ class Result extends React.Component {
             <p className="text-justify" style={{
               maxWidth: '80%'
             }}>
-              <strong>Address:
-              </strong>
-              {this.props.result.address}
+              <strong>Address: </strong>
+              {' ' + this.props.result.address}
               ({this.props.result.location})
             </p>
           </div>
@@ -52,9 +51,8 @@ class Result extends React.Component {
             <p className="text-justify" style={{
               maxWidth: '80%'
             }}>
-              <strong>Price:
-              </strong>
-              ${this.props.result.items[0].price}
+              <strong>Price: </strong>
+              {' $' + this.props.result.items[0].price}
             </p>
           </div>
           {
@@ -64,7 +62,7 @@ class Result extends React.Component {
                   showItems: !this.state.showItems
                 })}>
                   <strong>Click for {this.props.result.items.slice(1).length}
-                      more {
+                      {' more' } {
                       this.props.result.items.slice(1).length > 1
                         ? 'items!'
                         : 'item!'
@@ -79,7 +77,7 @@ class Result extends React.Component {
                 return (<div className="row col offset-5">
                   <div className="extra-items">
                     <p>
-                      <strong>Item:</strong>
+                      <strong>Item: </strong>
                       {item.item}</p>
                     <p style={{
                       maxWidth: item.description.length > 100
@@ -90,7 +88,7 @@ class Result extends React.Component {
                     </p>
                     <p>
                       <strong>Price:</strong>
-                      {item.price}</p>
+                      {' $' + item.price}</p>
                   </div>
                 </div>);
               })
