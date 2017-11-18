@@ -45,10 +45,12 @@ class App extends React.Component {
   }
 
   sortList(type, value) {
+    let list = this.state.list;
+    
     if (type === 'price') {
       this.setState({
-        list: this.state.list.sort((a, b) => {
-          return a.price - b.price;
+        list: list.sort((a, b) => {
+          return a.items[0].price - b.items[0].price;
         })
       });
     }
