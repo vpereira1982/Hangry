@@ -25,7 +25,7 @@ const Search = ({currFoodSearched, currLocationSearched, handleFoodUserSearch, h
           id="inlineFormInputGroup"
           placeholder="Where are you?" />
       </div>
-      <button type="submit" className="btn btn-primary">Be Full . Be Happy</button>
+      <button type="submit" className="btn btn-primary">Eat Happiness</button>
     </form>
   </div>
 );
