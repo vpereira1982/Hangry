@@ -1,6 +1,6 @@
 const Nav = require('./components/nav.js');
 const Search = require('./components/search.js');
-const ResultsList = require('./components/results-list.jsx');
+const ResultsList = require('./components/results-list.js');
 const Sampledata = require('./sampledata/sampledata.js');
 const HangryLogo = require('./components/logo-file.js');
 const APIcall = require('./components/ajax.js');
