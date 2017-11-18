@@ -35,11 +35,6 @@ class App extends React.Component {
       location: locationUserSearch
     };
 
-    handleClick = (e) => {
-      sortList(e.target.id);
-    };
-
-
     APIcall.post(userQuery, '/api/search', (data) => {
       console.log('SUCCESS on the POST call! Data:', data);
       this.setState({
@@ -70,6 +65,10 @@ class App extends React.Component {
     if (type === 'name') {
       console.log('it got here!', value);
     }
+  }
+
+  handleClick(e) {
+    sortList(e.target.id);
   }
 
   render() {
