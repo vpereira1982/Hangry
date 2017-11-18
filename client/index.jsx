@@ -3,7 +3,7 @@ const Search = require('./components/search.jsx');
 const ResultsList = require('./components/results-list.jsx');
 const Sampledata = require('./sampledata/sampledata.js');
 const HangryLogo = require('./components/logo-file.js');
-const APIcall = require('./components/ajax.js')
+const APIcall = require('./components/ajax.js');
 const React = require('react');
 const ReactDom = require('react-dom');
 
@@ -31,16 +31,16 @@ class App extends React.Component {
 
   handleSubmit(foodUserSearch, locationUserSearch) {
     let userQuery = {
-        query: foodUserSearch,
-        location: locationUserSearch
-      };
+      query: foodUserSearch,
+      location: locationUserSearch
+    };
 
 
     APIcall.post(userQuery, '/api/search', (data) => {
       console.log('SUCCESS on the POST call! Data:', data);
       this.setState({
         list: data.slice(0, 20)
-      })
+      });
     });
   }
 
@@ -48,7 +48,7 @@ class App extends React.Component {
     if (type === 'price') {
       this.setState({
         list: this.state.list.sort((a, b) => {
-          return a.price - b.price
+          return a.price - b.price;
         })
       });
     }
@@ -56,13 +56,13 @@ class App extends React.Component {
     if (type === 'relevance') {
       this.setState({
         list: this.state.list.sort((a, b) => {
-          return a.relevance - b.relevance
+          return a.relevance - b.relevance;
         })
       });
     }
 
     if (type === 'name') {
-      console.log('it got here!', value)
+      console.log('it got here!', value);
     }
   }
 
