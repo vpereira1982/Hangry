@@ -118,3 +118,16 @@ h3 {
   position: relative;
   margin: -22px;
 }
+
+#eat-food-title {
+  margin-top: 30px;
+}
+
+#restaurant-name {
+  float: left;
+  margin: -25px 0px 10px 0px;
+}
+
+#second {
+  padding-top: '7px';
+}
