@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       currFoodSearched: '',
       currLocationSearched: '',
-      list: []
+      list: [],
+      showItems: false
     };
   }
 
@@ -70,6 +71,16 @@ class App extends React.Component {
     this.sortList(e.target.id);
   }
 
+  sortHandleClick(e) {
+    this.props.sortList('name', this.props.result.name);
+  }
+
+  setShowItems() {
+    this.setState({
+      showItems: !this.state.showItems
+    });
+  }
+
   render() {
     return (
       <div>
@@ -86,6 +97,9 @@ class App extends React.Component {
           sortList={this.sortList.bind(this)}
           list={this.state.list}
           handleClick={this.handleClick.bind(this)}
+          sortHandleClick={this.sortHandleClick.bind(this)}
+          showItems={this.state.showItems}
+          setShowItems={this.setShowItems.bind(this)}
         />
       </div>
     );
