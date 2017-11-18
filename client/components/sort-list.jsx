@@ -1,17 +1,16 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-
 const SortList = (props) => {
 
   const handleClick = (e) => {
     props.sortList(e.target.id);
-  }
+  };
 
   return (
-    <div className="row no-gutters">
+    <div className="row no-gutters" id="sort-dropdown">
       <div className="btn-group btn-sort">
-        <button type="button" className="btn btn-warning dropdown-toggle btn-sm no-gutters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" className="dropdown-toggle no-gutters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Sort <span className="caret"></span>
         </button>
         <ul className="dropdown-menu">
@@ -20,7 +19,7 @@ const SortList = (props) => {
         </ul>
       </div>
     </div>
-  )
+  );
 };
 
 
