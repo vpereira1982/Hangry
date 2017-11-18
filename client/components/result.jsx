@@ -1,4 +1,4 @@
-const SortList = require('./sort-list.jsx');
+const SortList = require('./sort-list.js');
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -19,21 +19,17 @@ class Result extends React.Component {
     return (<div className="jumbotron Col xs={12} md={6}">
       <div className="row">
         <div className="col col-md-12">
-          <h5 onClick={this.handleClick} className="btn btn-danger" style={{
-            float: 'left',
-            margin: '-25px 0 10px 0'
-          }}>{this.props.result.name}</h5>
+          <h5 onClick={this.handleClick} className="btn btn-danger" id="restaurant-name">
+            {this.props.result.name}
+          </h5>
         </div>
       </div>
-      <div className="row card-block card" style={{
-        paddingTop: '7px'
-      }}>
+      <div className="row card-block card" id="second">
         <div className="col col-md-12 text-center">
           <img className="rounded float-left logo" src={this.props.result.logo}></img>
-
-          <p className="lead">
+          <div className="lead">
             <h2>{this.props.result.items[0].item}</h2>
-          </p>
+          </div>
           <div className="row justify-content-md-center">
             <p className="text-justify" style={{
               maxWidth: '80%'

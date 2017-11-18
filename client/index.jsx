@@ -1,5 +1,5 @@
-const Nav = require('./components/nav.jsx');
-const Search = require('./components/search.jsx');
+const Nav = require('./components/nav.js');
+const Search = require('./components/search.js');
 const ResultsList = require('./components/results-list.jsx');
 const Sampledata = require('./sampledata/sampledata.js');
 const HangryLogo = require('./components/logo-file.js');
@@ -33,6 +33,10 @@ class App extends React.Component {
     let userQuery = {
       query: foodUserSearch,
       location: locationUserSearch
+    };
+
+    handleClick = (e) => {
+      sortList(e.target.id);
     };
 
 
@@ -78,8 +82,13 @@ class App extends React.Component {
           currLocationSearched={this.state.currLocationSearched}
           handleFoodUserSearch={this.handleFoodUserSearch.bind(this)}
           handleLocationUserSearch={this.handleLocationUserSearch.bind(this)}
-          handleSubmit={this.handleSubmit.bind(this)}/>
-        <ResultsList sortList={this.sortList.bind(this)} list={this.state.list} />
+          handleSubmit={this.handleSubmit.bind(this)}
+        />
+        <ResultsList
+          sortList={this.sortList.bind(this)}
+          list={this.state.list}
+          handleClick={this.handleClick.bind(this)}
+        />
       </div>
     );
   }
