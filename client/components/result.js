@@ -52,8 +52,8 @@ const Result = ({sortHandleClick, showItems, result, setShowItems}) => (<div cla
                 {' more'}
                 {
                   result.items.slice(1).length > 1
-                    ? 'items!'
-                    : 'item!'
+                    ? ' items!'
+                    : ' item!'
                 }</strong>
             </button>
           </div>
