@@ -49,7 +49,7 @@ class Result extends React.Component {
             {this.props.result.items.length - 1 > 0
               ? <div className="row col offset-2 button-menu-cstm">
                     <button type="button" className="btn btn-warning btn-sm text-justify" onClick={() => this.setState({showItems: !this.state.showItems})}>
-                      <strong>Click for {this.props.result.items.slice(1).length} more items!</strong>
+                      <strong>Click for {this.props.result.items.slice(1).length} more {this.props.result.items.slice(1).length > 1 ? 'items!' : 'item!'}</strong>
                     </button>
                 </div>
               : null
