@@ -1,6 +1,6 @@
 const $ = require('jquery');
 
-const APIcall =  {
+const APIcall = {
   fetch: function(data, endpoint, callback) {
     $.ajax({
       type: 'GET',
@@ -10,7 +10,7 @@ const APIcall =  {
       error: function() {
         console.log('GET has failed');
       }
-    })
+    });
   },
 
   post: function(data, endpoint, callback) {
@@ -22,8 +22,8 @@ const APIcall =  {
       error: function() {
         console.log('GET has failed');
       }
-    })
+    });
   }
-}
+};
 
 module.exports = APIcall;
