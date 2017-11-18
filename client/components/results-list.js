@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-const Result = require('./result.jsx');
+const Result = require('./result.js');
 const SortList = require('./sort-list.js');
 const UserMessage = require('./user-message.js');
 
