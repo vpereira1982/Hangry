@@ -40,7 +40,7 @@ body {
 }
 
 #main-food-pic {
-  height: 132px;
+  height: 100px;
   padding-right: 5%;
 }
 
@@ -56,6 +56,7 @@ body {
 .btn.btn-primary {
   background: #384745;
   color: #FFF;
+  cursor: pointer;
   font-size: 100%;
 }
 
@@ -101,4 +102,19 @@ ul.dropdown-lr {
   text-align: left;
   margin-top: 5%;
   margin-left: -40%;
+}
+
+#sort-dropdown {
+  position: relative;
+  top: 88px;
+  margin-left: 91%;
+}
+
+#user-message {
+  font-size: 171%;
+}
+
+h3 {
+  position: relative;
+  margin: -22px;
 }
