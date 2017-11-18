@@ -46,29 +46,28 @@ class Result extends React.Component {
                   ${this.props.result.items[0].price}
                 </p>
               </div>
-            <div className="row col offset-2 button-menu-cstm">
-                <button type="button" className="btn btn-warning btn-sm text-justify" onClick={() => this.setState({showItems: !this.state.showItems})}>
-                  <strong>Click for {this.props.result.items.slice(1).length} more items!</strong>
-                </button>
-            </div>
-
+            {this.props.result.items.length - 1 > 0
+              ? <div className="row col offset-2 button-menu-cstm">
+                    <button type="button" className="btn btn-warning btn-sm text-justify" onClick={() => this.setState({showItems: !this.state.showItems})}>
+                      <strong>Click for {this.props.result.items.slice(1).length} more {this.props.result.items.slice(1).length > 1 ? 'items!' : 'item!'}</strong>
+                    </button>
+                </div>
+              : null
+            }
                 {this.state.showItems
                   ? this.props.result.items.slice(1).map(item => {
                       return (
                         <div className="row col offset-5">
                           <div className="extra-items">
-                            <p></p>
                             <p><strong>Item:</strong> {item.item}</p>
                             <p style={{maxWidth: item.description.length > 100 ? '80%' : '100%' }} ><i>{item.description}</i></p>
                             <p><strong>Price:</strong> {item.price}</p>
-                            <p></p>
                         </div>
                       </div>
                       )
                     })
                   : null}
             </div>
-
         </div>
       </div>
     )

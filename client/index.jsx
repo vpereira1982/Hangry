@@ -39,7 +39,7 @@ class App extends React.Component {
     APIcall.post(userQuery, '/api/search', (data) => {
       console.log('SUCCESS on the POST call! Data:', data);
       this.setState({
-        list: data.slice(0, 10)
+        list: data.slice(0, 20)
       })
     });
   }
@@ -76,8 +76,7 @@ class App extends React.Component {
           currLocationSearched={this.state.currLocationSearched}
           handleFoodUserSearch={this.handleFoodUserSearch.bind(this)}
           handleLocationUserSearch={this.handleLocationUserSearch.bind(this)}
-          handleSubmit={this.handleSubmit.bind(this)}
-        />
+          handleSubmit={this.handleSubmit.bind(this)}/>
         <ResultsList sortList={this.sortList.bind(this)} list={this.state.list} />
       </div>
     );
