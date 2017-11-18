@@ -10,12 +10,8 @@ const SortList = ({sortList, list, handleClick}) => (
       </button>
       <ul className="dropdown-menu">
         <li>
-          <a href="#" id='price' onClick={handleClick}>
+          <a href="#" id='price' onClick={handleClick.bind(this)}>
             Price</a>
-        </li>
-        <li>
-          <a href="#" id='relevance' onClick={handleClick}>
-            Relevance</a>
         </li>
       </ul>
     </div>

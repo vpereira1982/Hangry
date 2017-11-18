@@ -3,7 +3,7 @@ const React = require('react');
 const Nav = () => (<header>
   <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-indigo">
     <div className="container">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="">
         <strong>Hangry Home</strong>
       </a>
       <ul className="nav navbar-nav navbar-right" id="login">

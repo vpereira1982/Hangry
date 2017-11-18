@@ -36,6 +36,9 @@ class App extends React.Component {
     };
 
     APIcall.post(userQuery, '/api/search', (data) => {
+      if (!Array.isArray(data)) {
+        alert('Sorry, we are working on expanding our menu. Please try something else.');
+      }
       console.log('SUCCESS on the POST call! Data:', data);
       this.setState({
         list: data.slice(0, 20)
@@ -61,14 +64,10 @@ class App extends React.Component {
         })
       });
     }
-
-    if (type === 'name') {
-      console.log('it got here!', value);
-    }
   }
 
   handleClick(e) {
-    sortList(e.target.id);
+    this.sortList(e.target.id);
   }
 
   render() {
