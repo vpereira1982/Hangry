@@ -5,7 +5,7 @@ const request = require('request');
 let getNamesAndKeys = (location, foodType, callback) => {
   var splitFood = foodType.split(' ');
   let query = {
-    headers: {'X-Access-Token': config.key},
+    headers: {'X-Access-Token': process.env.key},
     url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both&pickup-radius=10&street-address=' + location
   };
   request.get(query, (error, response, body) => {
@@ -37,7 +37,7 @@ let formatRestaurantData = (body, searchedFood) => {
 //Gets menu items from "Restaurant Menu" endpoint: https://developers.eatstreet.com/endpoint/restaurant-menu
 let getMenu = (apiKey, foodType, callback) => {
   let query = {
-    headers: {'X-Access-Token': '0c8f1aa53d894030'},
+    headers: {'X-Access-Token': process.env.key},
     url: 'https://api.eatstreet.com/publicapi/v1/restaurant/' + apiKey + '/menu'
   };
   request.get(query, (error, response, body) => {
