@@ -46,11 +46,14 @@ class Result extends React.Component {
                   ${this.props.result.items[0].price}
                 </p>
               </div>
-            <div className="row col offset-2 button-menu-cstm">
-                <button type="button" className="btn btn-warning btn-sm text-justify" onClick={() => this.setState({showItems: !this.state.showItems})}>
-                  <strong>Click for {this.props.result.items.slice(1).length} more items!</strong>
-                </button>
-            </div>
+            {this.props.result.items.length - 1 > 0
+              ? <div className="row col offset-2 button-menu-cstm">
+                    <button type="button" className="btn btn-warning btn-sm text-justify" onClick={() => this.setState({showItems: !this.state.showItems})}>
+                      <strong>Click for {this.props.result.items.slice(1).length} more items!</strong>
+                    </button>
+                </div>
+              : null
+            }
                 {this.state.showItems
                   ? this.props.result.items.slice(1).map(item => {
                       return (

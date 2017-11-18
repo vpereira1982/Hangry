@@ -39,7 +39,7 @@ class App extends React.Component {
     APIcall.post(userQuery, '/api/search', (data) => {
       console.log('SUCCESS on the POST call! Data:', data);
       this.setState({
-        list: data.slice(0, 10)
+        list: data.slice(0, 20)
       })
     });
   }
