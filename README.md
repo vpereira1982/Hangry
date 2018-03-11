@@ -2,7 +2,9 @@
 An app that allows you to find relevant restaurants nearest you based on what specific menu items. 
 
 ## Team O-sensations
-  Product Owner: Li, Scrum Master: Matt, Development Team members: Vitor, Chris
+  Product Owner: Li
+  Scrum Master: Matt
+  Team members: Vitor, Chris
 
 ## Road-Map
 1 - npm install --save
