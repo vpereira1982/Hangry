@@ -5,7 +5,7 @@ An app that allows you to find relevant restaurants nearest you based on what sp
   Product Owner: Li
   Scrum Master: Matt
   Team members: Vitor, Chris
-
+  
 ## Road-Map
 1 - npm install --save
 2 - Check the package.json 'scripts' section to start the server and client
